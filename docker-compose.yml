@@ -7,13 +7,13 @@ services:
       MYSQL_DATABASE: learning
     volumes:
       - my-vol:/var/lib/mysql
-    networks:
-      - survey-net
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # networks:
+    #   - survey-net
+    # healthcheck:
+    #   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
 
   app:
     build: .
@@ -22,14 +22,14 @@ services:
     environment:
       DB_USERNAME: root
       DB_PASSWORD: password
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - survey-net
+#     depends_on:
+#       mysql:
+#         condition: service_healthy
+#     networks:
+#       - survey-net
 
-networks:
-  survey-net:
+# networks:
+#   survey-net:
 
 volumes:
   my-vol:
