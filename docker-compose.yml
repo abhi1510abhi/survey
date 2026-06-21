@@ -1,0 +1,12 @@
+version: '1.0'
+services:
+  app:
+    build: . # Build the Docker image from the current directory
+    ports:
+      - 8023:8023
+    volumes:
+      - my-vol:/app
+
+volumes:
+  my-vol:
+ 
